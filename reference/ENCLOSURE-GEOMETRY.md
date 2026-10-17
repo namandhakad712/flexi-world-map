@@ -1,101 +1,116 @@
-# Enclosure geometry — settled parameters + the design fork
+# Enclosure geometry — Fork A final design (commit-ready numbers)
 
-Every dimension that is *decided* goes here. Anything still open is labelled
-`OPEN`. When Gemini proposes a part, its numbers are checked against this
-file.
+Architecture picked: **A — the CYD look.** Board tilted 45° with the
+display-header end up, display panel parallel in front, component side and
+module facing the open back. This file is the single source of truth; when
+Gemini proposes a part, its numbers get checked against here.
 
-## Confirmed by measurement or vendor datasheet
+## Global coordinate system
 
-### Board (measured from fabricated PCB, commit 1a13f18)
+Wedge sits on the desk, screen facing the user (−Y direction).
 
-| Property | Value |
-| --- | --- |
-| Outline | 85.0 (X) × 40.0 (Y) × 1.6 |
-| M3 holes (drill 3.2) | (4,4) · (81,4) · (4,36) · (81,36) |
-| Under-board pin protrusion | ~3.0 mm (J1 socket + J2 header tails) |
-| Module above carrier top | ~9 mm → component envelope ≈ 10.6 mm |
+```
+   Z (up)
+   │            user looks from this side (−Y)
+   │             ╱ display panel, screen faces −Y
+   │            ╱  86 long, tilted 45°
+   │           ╱
+   │          ╱  board plane, 8mm behind display back face
+   │         ╱   component side faces +Y (open)
+   │        ╱
+   │_______╱________________________ → Y (depth, 0 at front face)
+  front wall 8mm
+```
 
-### Display module (Elecrow DLS23028B, from BOM)
+`x` in the tables below = distance along the slope from the wedge's
+front-bottom corner (s = 0). The slope rises at 45°, so ΔY = ΔZ = Δx × 0.707.
 
-| Property | Value |
-| --- | --- |
-| Module PCB | **50 × 86 mm** |
-| Active area | 43.2 × 57.6 mm |
-| Interface | 9-pin SPI header (VCC GND CS RST DC SDI SCK LED SDO) |
-| Extra | SD card slot on the back side — needs ~2.5 mm relief behind module |
-| Consequence | Display is **wider than the board** (50 > 40) and almost as long (86 ≈ 85) |
+## Settled dimensions
 
-### Fixed case parameters (decided)
+### Envelope
 
-| Parameter | Value | Why |
+| Dimension | Value | Derivation |
 | --- | --- | --- |
-| Wall thickness | 2.0 mm |.printable, stiff |
-| Floor thickness | 2.0 mm | flat base |
-| Boss OD | 7.0 mm | M3 heat-set insert (4.0 mm OD) needs ≥1.5 mm wall |
-| Boss hole | 3.8 mm | press/melt fit for 4.0 mm OD insert |
-| Boss height | 4.0 mm | clears 3.0 mm of under-board pin tails |
-| Screw | M3 × 10 SHCS | through PCB into insert |
-| Display angle | 45 deg | user choice |
-| Board-to-display gap | ≥ 14 mm | module envelope 10.6 + cable + slack |
-| Layer height | 0.20 mm, PLA | |
+| Outer width | **56.0** | display 50 + 2×1.0 clearance + 2×2.0 wall |
+| Front wall height | **8.0** | from desk to where the slope starts |
+| Slope length (s) | **96.0** | display 86 + 4 lip at front + 6 margin at top |
+| Slope run / rise | **67.9 / 67.9** | 45° over 96 |
+| Total depth | **71.0** | 67.9 + 3 back rim |
+| Total height | **76.0** | 67.9 rise + 8 front wall |
+| Slope angle | **45°** | |
 
-## The design fork
+### Display pocket (in the wedge's sloped face)
 
-The display being 86 mm — the same length as the board — is what forces a
-choice. Two architectures both work, both are printable, and the display
-numbers are identical in both. What differs is where everything else ends up.
+| Dimension | Value |
+| --- | --- |
+| Panel used | Elecrow DLS23028B, 50 × 86, active 43.2 × 57.6 |
+| Window opening (screen reveal) | 45.0 × 59.0 — 0.9 mm lip over active area all round |
+| Pocket depth (panel beds into slope) | 3.0 |
+| Panel position along slope | s = 4 → 90 |
+| Position across width | centred in 56 |
+| SD card slot relief | pocket floor stays clear, no bosses within 25 × 25 of panel centre |
 
-### Fork A — "the CYD look": whole board tilted back at 45 deg
+### Board mounting
 
-```
-                 ╱ display (in bezel, screen faces you)
-                ╱   86 x 50, tilted 45
-               ╱
-              ╱ ← 14 mm gap, module + J2 cable live here
-             ╱
-            ╱ ← carrier board 85 x 40, also tilted 45
-           ╱
-   _______╱_________________________________
-   │            wedge base                  │
-   └──── USB-C cutout in left wall ─────────┘
-```
+The board plane sits **8 mm behind the display panel's back face**
+(perpendicular), so its along-position is s = 6 → 91 (85 long).
 
-- Board tilted 45° with the **x=85 (display-header) end UP**.
-- Component side faces the **back**, which is open — so the module antenna
-  radiates into free air, nothing above it.
-- Footprint ≈ 70 deep × 56 wide × 63 tall.
-- Buttons, module and chime all end up on the open back — speaker grill
-  on the back or the left wall.
-- Mounting: M3 screws from the back, through PCB into inserts held by the
-  bezel side rails.
-- Matches the reference stand's proportions.
+| Item | Value | Note |
+| --- | --- | --- |
+| Perp. gap, display-back to board-solder-side | 8.0 | clears display connector + SD bump |
+| Mount holes (board XY) | (4,4) · (81,4) · (4,36) · (81,36) | measured |
+| Hole → s coordinate | s = 6 + board_x | |
+| Boss | OD 7.0, Ø3.8 hole, M3 heat-set insert 4.0 OD × 4.0 L | printed in the posts |
+| Post | from pocket floor up to board, 6.4 tall | 8 gap − 1.6 board |
+| Screws | 4× M3 × 10 SHCS, **from the back**, through PCB into inserts | component side is accessible — open back |
 
-### Fork B — "tray + leaning screen": board flat, display leaning above it
+Screw access from the back is fine at all four holes: the module socket span
+is x 15.8–69.2, so the x=4 and x=81 hole columns sit clear of the module.
+Crowded-but-ok: BT1 JST-PH at (8,32) vs H3 at (4,36) = 5.7 mm — verify no
+connector body overhangs the hole before printing.
 
-```
-        display 86x50 leaning forward at 45°
-        ╱‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾╲
-       ╱    screen faces you    ╲
-      ╱__________________________╲
-      │  o module + antenna       │
-      │  o o o ← buttons, face up │
-      │        (board lies flat)  │
-      │__________________________ │
-```
+### Rear cover (part 3)
 
-- Board lies horizontal in a shallow open tray — easiest to drop in,
-  easiest screws (straight down into base bosses).
-- Display leans at 45° above/behind the board, either rising from the rear
-  edge or overhanging forward.
-- Nothing is above the module antenna at all — best possible RF.
-- Footprint ≈ 90+ deep × 56 wide × 75 tall (bigger, taller than A).
-- Buttons accessed from the top, speaker grill in a tray wall.
+Parallel to the board, **14 mm behind the component side** — clears the
+module envelope (10.6) plus the button caps (5.0).
+
+| Feature | Value |
+| --- | --- |
+| Button holes | 3 × Ø6.2 at board (28,24) (42,24) (56,24) mapped onto the cover plane |
+| Antenna window | 22 × 35 cutout over the x > 68 zone — no plastic in front of the module antenna |
+| Chime bay | reserved 32 × 16 × 6 near board (51,3) — generic, module not bought yet |
+| Fastening | 2× self-tap into small printed posts on the wedge rim (no extra hardware) |
+
+### Cable routing
+
+- **J2 → display**: 9-pin female-to-female jumpers fold over the board's top
+  edge (s = 91) and drop into the pocket. Path is in the 8 mm gap.
+- **USB-C**: uses the board's own receptacle — J5 is at board (0,0), its
+  opening points along −X = down the slope toward the front-bottom corner.
+  Cut a slot in the front wall at s ≈ 0–8. **No panel-mount pigtail needed.**
+  `VERIFY`: confirm J5 receptacle overhangs the x=0 edge (not the y edge)
+  before the slot is cut — re-check the footprint pads.
+
+## Part manufacturing order (this drives the Gemini prompts)
+
+1. **Master sketch** — board outline + 4 holes at 1:1 on one sketch, and the
+   wedge side-profile on another (front view). Nothing extruded yet.
+2. **Wedge base** — extrude side profile across 56, cut display pocket with
+   the screen window, add the 4 posts + inserts.
+3. **Rear cover** — flat panel with button holes, antenna window, chime bay.
+4. **Assembly + interference check** — board + display + base + cover.
+5. **Export** — assembly STEP, base STL, cover STL, 3 screenshots.
+
+## Print orientation
+
+- Base prints **flat on its underside**; the slope is a 45° overhang, exactly
+  at the no-support limit. Use 0.16–0.20 mm layers and it steps cleanly.
+- Rear cover prints face-down, flat, no supports.
+- PLA or PETG, 3 perimeters, 15% infill.
 
 ## Still open
 
-- **`OPEN` Fork A vs Fork B** — user's call, it changes the whole build order.
-- **`OPEN` Chime module physical size** — the J3 3-pin header feeds a separate
-  active chime/buzzer that has to live somewhere in the case. Need its mm.
-- **`OPEN` Display cable length/type** — J2 is 9-pin 2.54 male header; the
-  Display side needs matching female-to-female jumpers or a cut ribbn. Fix
-  the routing only after the fork is chosen.
+- **`VERIFY`** J5 USB-C overhang direction (x=0 edge vs y edge) — re-read the
+  J5 footprint pads in `lume-coaster.kicad_pcb`.
+- **`OPEN`** Chime module physical size — bay is generic 32×16 until bought.
+- **`OPEN`** Colour choice for the rear cover (cosmetic, pick later).
