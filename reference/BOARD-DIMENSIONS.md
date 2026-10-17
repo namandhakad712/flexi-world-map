@@ -1,4 +1,4 @@
-# Board measurements — source of truth for every CAD dimension
+﻿# Board measurements — source of truth for every CAD dimension
 
 Every number below is extracted from the fabricated
 `lume-coaster.kicad_pcb` (commit `1a13f18`, gerbers verified). Do not
@@ -44,7 +44,7 @@ inserts in the base bosses.
 | H3 | 4 | 36 |
 | H4 | 81 | 36 |
 
-Boss centre = hole centre. Recommend boss OD 6.0 mm (for a 5.0 mm OD
+Boss centre = hole centre. Recommend boss OD 6.0 mm (for a 4.0 mm OD
 heat-set insert you want ≥0.5 mm wall all round).
 
 ## Populated envelope (top side)

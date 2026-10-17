@@ -12,12 +12,15 @@
 
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
-| PLA filament (black, matte) | wedge base + bezel, ~35 g | 1 | $3.00 | $3.00 | local |
-| M3x10 SHCS screws | bezel → base | 4 | $0.10 | $0.40 | [Amazon](https://www.amazon.com/) |
-| M3 heat-set inserts (5mm OD) | threaded bosses in base | 4 | $0.15 | $0.60 | [Amazon](https://www.amazon.com/) |
-| USB-C panel-mount pigtail | rear power entry | 1 | $2.00 | $2.00 | [Amazon](https://amzn.eu/d/01LBdiyW) |
-| **Parts subtotal** | — | — | — | **$6.00** | — |
+| PLA filament (black, matte) | wedge base + rear cover, ~35 g | 1 | $3.00 | $3.00 | local |
+| M3x12 SHCS screws | board to base bosses | 4 | $0.10 | $0.40 | [Amazon](https://www.amazon.com/) |
+| M3 heat-set inserts (4.0 mm OD) | threaded bosses in base | 4 | $0.15 | $0.60 | [Amazon](https://www.amazon.com/) |
+| **Parts subtotal** | — | — | — | **$4.00** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$6.00** | — |
+| **Total** | — | — | — | **$4.00** | — |
 
-$24.00 left of the tier's funding.
+$26.00 left of the tier's funding.
+
+> Screws are M3x12, not M3x10: the board (1.6 mm) plus the 9.0 mm boss needs
+> 10.6 mm of travel. The panel-mount USB-C pigtail was dropped — the board's
+> own USB-C receptacle is used, with a slot cut in the front wall.
