@@ -55,6 +55,13 @@ front-bottom corner (s = 0). The slope rises at 45°, so ΔY = ΔZ = Δx × 0.70
 The board plane sits **8 mm behind the display panel's back face**
 (perpendicular), so its along-position is s = 6 → 91 (85 long).
 
+> **Module height corrected** — see [MODULE-DIMENSIONS.md](MODULE-DIMENSIONS.md).
+> The official T5AI-Core STEP shows the module is 72.3 × 44.2 mm with pins
+> protruding only 2.9 mm below it, and Tuya's own spec is 73 × 29 × 11 mm
+> (17 mm with headers). Realistic module clearance to plan for is
+> **≥ 13.0 mm**, not the 9 mm assumed in the first draft. The board-to-cover
+> figure below reflects the corrected stack.
+
 | Item | Value | Note |
 | --- | --- | --- |
 | Perp. gap, display-back to board-solder-side | 8.0 | clears display connector + SD bump |
@@ -71,8 +78,17 @@ connector body overhangs the hole before printing.
 
 ### Rear cover (part 3)
 
-Parallel to the board, **14 mm behind the component side** — clears the
-module envelope (10.6) plus the button caps (5.0).
+Parallel to the board, **17 mm behind the board plane** — clears the real
+module envelope (measured 11 mm tall + pins, see
+[MODULE-DIMENSIONS.md](MODULE-DIMENSIONS.md)) plus the button caps (5.0 mm).
+
+> Pocket depth for the module zone is **30.6 mm** perpendicular to the slope
+> (gap 8 + board 1.6 + module 13 + cover 2.0 + slack 6). The first draft
+> budgeted 26.6 and assumed a closed back wall — that did **not** fit:
+> `tools/check_pocket.py` proved the back wall would breach the floor by
+> ~4 mm. The corrected model is an open-rear shell; see
+> [SHELL-MODEL.md](SHELL-MODEL.md).
+
 
 | Feature | Value |
 | --- | --- |
@@ -111,6 +127,17 @@ module envelope (10.6) plus the button caps (5.0).
 ## Still open
 
 - **`VERIFY`** J5 USB-C overhang direction (x=0 edge vs y edge) — re-read the
-  J5 footprint pads in `lume-coaster.kicad_pcb`.
+  J5 footprint pads in `lume-coaster.kicad_pcb`. *(pads at x 1.5–6.2 confirm
+  the receptacle opens toward the x=0 edge — done in commit b13106f)*
 - **`OPEN`** Chime module physical size — bay is generic 32×16 until bought.
 - **`OPEN`** Colour choice for the rear cover (cosmetic, pick later).
+
+## Corrected by measurement (supersedes first draft)
+
+| Was | Now | Evidence |
+| --- | --- | --- |
+| module rides ~9 mm above carrier | **≥ 13.0 mm clearance** | official STEP: 73×29×11 mm, 17 mm with headers; pins 2.9 mm |
+| module socket zone x 15.8–69.2 unchanged | confirmed ✓ | measured from both carrier PCB and official module STEP |
+| rear cover 14 mm behind component side | now **17 mm** behind board plane | module stack corrected |
+| pocket depth 26.6 (module zone) | **30.6** | gap 8 + board 1.6 + module 13 + cover 2.0 + slack 6 |
+

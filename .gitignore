@@ -30,3 +30,6 @@ Thumbs.db
 .idea/
 .vscode/
 .dsh-vision-router
+
+# Vendor 3D model of the module - 37MB, re-download from MODULE-DIMENSIONS.md
+reference/T5AI-Core_V101.step
