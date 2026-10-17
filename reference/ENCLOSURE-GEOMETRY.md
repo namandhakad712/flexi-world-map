@@ -82,11 +82,12 @@ Parallel to the board, **17 mm behind the board plane** — clears the real
 module envelope (measured 11 mm tall + pins, see
 [MODULE-DIMENSIONS.md](MODULE-DIMENSIONS.md)) plus the button caps (5.0 mm).
 
-> Pocket depth for the module zone is **30.6 mm** perpendicular to the slope
-> (gap 8 + board 1.6 + module 13 + cover 2.0 + slack 6). The first draft
-> budgeted 26.6 and assumed a closed back wall — that did **not** fit:
-> `tools/check_pocket.py` proved the back wall would breach the floor by
-> ~4 mm. The corrected model is an open-rear shell; see
+> Pocket depth for the module zone is **24.6 mm** perpendicular to the slope
+> (gap 8 + board 1.6 + module envelope 13 + 2 cable slack). The rear cover is
+> a separate part sitting *behind* the board, so it does not add to the
+> pocket. The first draft budgeted 26.6 and assumed a closed back wall — that
+> did **not** fit: `tools/check_pocket.py` proved the back wall would breach
+> the floor. The corrected model is an open-rear shell; see
 > [SHELL-MODEL.md](SHELL-MODEL.md).
 
 
@@ -139,5 +140,5 @@ module envelope (measured 11 mm tall + pins, see
 | module rides ~9 mm above carrier | **≥ 13.0 mm clearance** | official STEP: 73×29×11 mm, 17 mm with headers; pins 2.9 mm |
 | module socket zone x 15.8–69.2 unchanged | confirmed ✓ | measured from both carrier PCB and official module STEP |
 | rear cover 14 mm behind component side | now **17 mm** behind board plane | module stack corrected |
-| pocket depth 26.6 (module zone) | **30.6** | gap 8 + board 1.6 + module 13 + cover 2.0 + slack 6 |
+| pocket depth 26.6 (module zone) | **24.6** | gap 8 + board 1.6 + module 13 + 2 slack; the rear cover is a separate part, not pocket depth |
 

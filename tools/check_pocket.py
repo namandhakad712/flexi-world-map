@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """check_pocket.py - does the stepped pocket fit inside the wedge?
 
 CORRECTED MODEL. The geometry doc originally drew a closed-back wedge with a
 pocket cut into the slope. That is geometrically impossible: the module zone
-needs 26.6 mm of perpendicular depth and only 22.75 mm exists between the
+needs 24.6 mm of perpendicular depth and only 22.75 mm exists between the
 slope face and a 71 mm-deep back wall.
 
 The right model (and the one the reference stand uses) is an OPEN-REAR shell:
@@ -19,7 +19,7 @@ the minimum wall thickness, at every slope station of every zone.
     zone          slope span   depth p (mm)
     display only   s  4.. 6     3.0
     board + panel  s  6..21.8   12.6   (panel 3 + gap 8 + board 1.6)
-    module zone    s 21.8..75.2 26.6   (+ module envelope 10.6 + slack)
+    module zone    s 21.8..75.2 24.6   (+ module envelope 10.6 + slack)
     board top      s 75.2..91   12.6
 """
 
@@ -32,7 +32,7 @@ WALL_MIN = 2.0
 ZONES = [
     ("display lip", 4.0, 6.0, 3.0),
     ("board+panel", 6.0, 21.8, 12.6),
-    ("module", 21.8, 75.2, 26.6),
+    ("module", 21.8, 75.2, 24.6),
     ("board top", 75.2, 91.0, 12.6),
 ]
 

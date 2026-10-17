@@ -1,9 +1,9 @@
 # Shell model — the corrected Wedge A structure
 
 `tools/check_pocket.py` caught a real flaw in the first geometry draft:
-a wedge with a **closed back wall** cannot hold a 30.6 mm pocket cut into a
-45° slope. With a 71 mm-deep base, the back wall intrudes into the pocket
-by about 4 mm in the module zone, which would have been a broken print.
+a wedge with a **closed back wall** cannot hold the pocket needed at a
+45° slope. With a 71 mm-deep base, the back wall intrudes into the pocket,
+which would have been a broken print.
 
 The corrected model is the one the reference stand actually uses: an
 **open-rear shell**.
@@ -34,9 +34,9 @@ The corrected model is the one the reference stand actually uses: an
 
 ## Why open-rear is right (three reasons)
 
-1. **It fits.** A closed back wall would have to be ≥ 30.6 mm deep
-   perpendicular to a 45° slope at the module span; the geometry simply does
-   not close in a 71 mm-deep wedge.
+1. **It fits.** A closed back wall would have to be as deep as the module
+   pocket, perpendicular to a 45° slope at the module span; the geometry
+   simply does not close in a 71 mm-deep wedge.
 2. **It is what the reference does.** The CYD stand and nearly every small
    display stand is a front shell plus a rear cover panel.
 3. **It is honest about the antenna.** The module's component side faces the
@@ -45,12 +45,16 @@ The corrected model is the one the reference stand actually uses: an
 
 ## Pocket depths (perpendicular to the slope face)
 
+The rear cover is a **separate part behind the board** and does not add to
+the pocket.
+
 | Zone | Slope span (s) | Depth | Contents |
 | --- | --- | --- | --- |
 | Display lip | 4 → 6 | 3.0 | panel + 0.9 lip recess |
 | Board + panel | 6 → 21.8 | 12.6 | 3 + 8 gap + 1.6 board |
-| Module | 21.8 → 75.2 | **30.6** | + module envelope 13 + slack |
+| Module | 21.8 → 75.2 | **24.6** | gap 8 + board 1.6 + module envelope 13 + 2 cable slack |
 | Board top | 75.2 → 91 | 12.6 | rest of the board |
 
-Verified by `tools/check_pocket.py`: the pocket floor stays ≥ 3.33 mm above
-the outer bottom everywhere, above the 2.0 mm minimum wall.
+Verified by `tools/check_pocket.py` and `tools/check_part1.py`: the pocket
+floor stays ≥ 3.33 mm above the outer bottom everywhere, above the 2.0 mm
+minimum wall.
