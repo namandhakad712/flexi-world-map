@@ -1,0 +1,32 @@
+# Private planning notes, not part of this project's deliverable.
+.private/
+
+# Never commit build output or dependencies anywhere.
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Local CAD exports — keep the STEP in the repo, drop the scratch versions.
+*.stl.temp
+*.gcode
+*.3mf
+*.gltf
+*.glb
+
+# Onshape GLTF/VRML scratch dumps
+onshape-exports/
+
+# Probe logs and scratch output.
+tools/probes/probe-in.txt
+tools/probes/probe-out.txt
+tools/probe/probe-err.txt
+
+# OS / editor noise.
+Thumbs.db
+.DS_Store
+*.swp
+.idea/
+.vscode/
+.dsh-vision-router

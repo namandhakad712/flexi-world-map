@@ -1,0 +1,10 @@
+{
+  "mcp": {
+    "servers": {
+      "onshape-labs": {
+        "type": "remote",
+        "url": "https://fs-mcp.labs.onshape.app/mcp"
+      }
+    }
+  }
+}
