@@ -10,16 +10,18 @@
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
-| Week 2 | Tier 1 | 0.07h | 1 |
+| Week 2 | Tier 1 | 0.27h | 1 |
 
 ## Contents
 
-1. [2026-10-18 – Work session](#2026-10-18-work-session)
+1. [2026-10-18 – Just warming up things , setting up](#2026-10-18-just-warming-up-things-setting-up)
 
 ## Design
 
-### 2026-10-18 – Work session
+### 2026-10-18 – Just warming up things , setting up
 
-**0.07h**
+**0.27h**
+
+Just warming up things , setting up
 
 [Timelapse](https://lookout.hackclub.com/api/media/b63ac45a-98e3-4664-b3b8-09c3ee9a8e83/video.mp4)
