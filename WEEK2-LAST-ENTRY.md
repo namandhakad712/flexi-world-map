@@ -17,6 +17,8 @@
 
 ## Entry body
 
+Lapse= https://lapse.hackclub.com/timelapse/6POtN0mojs09
+
 Let me get the embarrassing part out of the way first: **today is October 19th. Week 2 ended yesterday.** I'm filing this because the last stretch of this project broke me a little and I refused to go to sleep with it unfinished. The last 3+ hours are on the timelapse and honestly they were the worst ones. i got the base layer done before — 1cm strips, 2mm slits, all planned out. then came the actual world map and it just. broke me.
 
 the DXF hellscape. i downloaded SO many world map files and almost all of them were unusable. some were just lines — outlines with no closed shape so you can't extrude them into anything. some were literal dots?? opened the file and it was just a scatter of points like a printer having a seizure. some were all fused together so you'd select africa and get the entire atlantic along with it. and some had incomplete loops — the coastline would just stop, leave a gap, pick up somewhere else. a continent shaped like a broken moon.
