@@ -15,14 +15,14 @@ myself instead of downloading one — figure out the projection, get the hinge
 geometry right, make something that's both printable AND bends.
 
 ## what i actually did
-
+![alt text](image-1.png)
 modeled from scratch in onshape (onshape public link below). base is 1cm
 strips with 2mm slits, map layer is unioned onto it with matching slits so
 the whole part flexes as one. the map file itself was a journey — i went
 through a pile of broken dxf/svg/txt files (dots, open loops, fused paths)
 and had to hand-fix coastlines before finding a clean one. more on that in
 the journal.
-
+![alt text](image-2.png)
 ## print
 
 - 0.20mm layers, slow first layer (hinges depend on it)
